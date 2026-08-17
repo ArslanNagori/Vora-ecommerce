@@ -4,7 +4,7 @@ import { RotateCcw, Truck, Lock, Headset } from "lucide-react";
 
 const ServiceHighlights = () => {
   return (
-    <div className=" sticky bottom-0 z-10 bg-white flex justify-around border-t border-gray-200 py-3 px-4">
+    <div className=" sticky bottom-0 z-10 bg-white flex justify-around border-t border-gray-200 py-2 px-4">
       <ServiceItems
         icon={Truck}
         title="Free Shipping"

@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import ServiceHighlights from "../components/ServiceItems/ServiceHighlights";
 import Categories from "../components/Categories/Categories";
 import BestSelling from "../components/BestSelling";
+import Footer from "../components/Footer";
 
 const Home = () => {
   const handelPrev = () => {
@@ -19,7 +20,7 @@ const Home = () => {
         <img
           src={heroImage}
           alt="Summer Essentials collection banner"
-          className="w-full h-auto rounded-2xl"
+          className="w-full h-[calc(100vh-84px)] rounded-2xl"
         />
         <button onClick={handelPrev} className="absolute left-6 top-1/2 -translate-y-1/2 bg-white rounded-full p-3 shadow-md hover:bg-gray-100 transition-colors">
           <ChevronLeft className="w-5 h-5 text-gray-800" />
@@ -30,7 +31,9 @@ const Home = () => {
       </section>
       <Categories />
       <BestSelling />
+      <Footer />
       <ServiceHighlights />
+      
     </div>
 
   );
