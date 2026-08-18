@@ -16,7 +16,7 @@ const Categories = () => {
   ];
 
   return(
-    <div className="flex justify-around px-6 py-8">
+    <div className="flex justify-around px-6 py-4">
     {
         categories.map((category)=>(
             <CategoryItem key={category.label} icon={category.icon} label={category.label} />

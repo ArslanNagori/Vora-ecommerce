@@ -1,39 +1,56 @@
 import { Heart, ShoppingBag } from "lucide-react";
 
-const ProductCart = ({ image, title, price, colors }) => {
-  
+const ProductCart = ({ image, title, description, price, colors }) => {
   return (
-    <div className="border border-gray-200 rounded-2xl relative overflow-hidden cursor-pointer hover:shadow-md transition-shadow">
-      <button className="absolute top-3 right-3 bg-white rounded-full p-1.5 shadow z-10">
-        <Heart className="w-4 h-4 text-gray-700" />
-      </button>
+    <div className="bg-white border border-[#D8D1C7] rounded-xl p-2.5 w-full max-w-52.5 hover:shadow-md transition-shadow duration-200">
 
-      <img
-        src={image}
-        alt={title}
-        className="w-full h-48 object-cover"
-      />
+      {/* Image area */}
+      <div className="relative bg-[#F7F3EC] rounded-lg h-37.5 flex items-center justify-center overflow-hidden">
+        <button className="absolute top-2 right-2 bg-white rounded-full w-7 h-7 flex items-center justify-center shadow-sm hover:bg-[#FAF8F3] transition-colors z-10">
+          <Heart className="w-3.5 h-3.5 text-[#77736D]" />
+        </button>
 
-      <div className="p-3">
-        <h3 className="text-sm font-medium text-gray-900">{title}</h3>
-        <p className="text-sm text-gray-600 mt-1">₹{price}</p>
+        <img
+          src={image}
+          alt={title}
+          className="w-[65%] h-[65%] object-contain"
+        />
+      </div>
+
+      {/* Info */}
+      <div className="pt-2.5 px-0.5">
+        <h3 className="text-[13px] font-medium text-[#22211F] leading-snug line-clamp-1">
+          {title}
+        </h3>
+
+        {description && (
+          <p className="text-[10px] text-[#77736D] mt-0.5 leading-relaxed line-clamp-2">
+            {description}
+          </p>
+        )}
 
         {colors && (
-          <div className="flex mt-2 gap-1.5">
+          <div className="flex gap-1 mt-1.5">
             {colors.map((color, index) => (
               <span
                 key={index}
                 style={{ backgroundColor: color }}
-                className="w-3 h-3 rounded-full border border-gray-300"
+                className="w-2.5 h-2.5 rounded-full border-2 border-white shadow-sm ring-1 ring-[#D8D1C7]"
               ></span>
             ))}
           </div>
         )}
 
-        <button className="w-full mt-3 border border-gray-900 rounded-full py-2 flex items-center justify-center gap-2 text-sm font-medium text-gray-900 hover:bg-gray-900 hover:text-white transition-colors">
-          <ShoppingBag className="w-4 h-4" />
-          Add to Cart
-        </button>
+        <div className="flex items-center justify-between mt-2 gap-1.5">
+          <p className="text-[14px] font-bold text-[#22211F] whitespace-nowrap">
+            ₹{price?.toLocaleString("en-IN")}
+          </p>
+
+          <button className="bg-[#FAF8F3] hover:bg-[#1C1C1B] border border-[#D8D1C7] hover:border-[#1C1C1B] active:scale-95 text-[#22211F] hover:text-white text-[10.5px] font-medium px-2 py-1.5 rounded-md flex items-center gap-1 transition-all duration-200">
+            <ShoppingBag className="w-3 h-3" />
+            Add
+          </button>
+        </div>
       </div>
     </div>
   );

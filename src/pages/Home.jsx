@@ -10,12 +10,12 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div>
-      <section className="relative ">
+      <section className="relative h-60 overflow-hidden rounded-2xl ">
         <Link  to="/products?category=all">
           <img
             src={heroImage}
             alt="Summer Essentials collection banner"
-            className="w-full h-[calc(100vh-84px)] rounded-2xl"
+            className="w-full h-full object-cover"
           />
         </Link>
       </section>

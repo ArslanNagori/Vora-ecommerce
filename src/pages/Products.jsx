@@ -64,7 +64,7 @@ useEffect(() => {
           {loading ? (
             <p className="text-gray-500">Loading products...</p>
           ) : (
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-5 gap-3">
               {products.map((product) => (
                 <ProductCard key={product.id} {...product} />
               ))}
