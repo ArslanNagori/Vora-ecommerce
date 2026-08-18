@@ -5,7 +5,7 @@ const ProductsSideBar = () => {
   const activeCategory = searchParams.get("category");
 
   return (
-    <aside className="w-56 flex-shrink-0">
+    <aside className="w-56 shrink-0">
 
       {/* Categories */}
       <div>

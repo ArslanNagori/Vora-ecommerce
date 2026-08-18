@@ -1,5 +1,5 @@
 import React from "react";
-import heroImage from "../asset/Vora_hero_section.png";
+import heroImage from "../asset/Vora_hero_banner4.png";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ServiceHighlights from "../components/ServiceItems/ServiceHighlights";
 import Categories from "../components/Categories/Categories";

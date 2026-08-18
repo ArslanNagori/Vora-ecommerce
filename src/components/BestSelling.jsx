@@ -43,12 +43,20 @@ const bestSellingProducts = [
       "https://img.freepik.com/premium-photo/minimalist-white-headphones-with-4k-hd-technology_899449-18121.jpg?w=2000",
     colors: ["#111827", "#e5e7eb"],
   },
+   {
+    id: 6,
+    title: "Ghar Soaps Sandalwood & Saffron Magic Bar",
+    price: 398,
+    image:
+      "https://m.media-amazon.com/images/I/41bRGCwCowL._SY300_SX300_QL70_FMwebp_.jpg",
+    colors: [],
+  },
 ];
 
 const BestSelling = () => {
   return (
-    <section className="px-6 py-2">
-      <div className="flex justify-between items-center mb-4">
+    <section className="px-6 py-0">
+      <div className="flex justify-between items-center  mb-1">
         <div className="flex items-center gap-2">
           <h2 className="text-xl font-semibold text-gray-900">Best Selling</h2>
           <span className="text-xs bg-green-50 text-green-700 px-2 py-1 rounded-full">
@@ -63,7 +71,7 @@ const BestSelling = () => {
       </div>
 
       <div className="relative">
-        <div className="grid grid-cols-5 gap-4">
+        <div className="grid grid-cols-6 gap-4">
           {bestSellingProducts.map((product) => (
             <ProductCard key={product.id} {...product} />
           ))}
