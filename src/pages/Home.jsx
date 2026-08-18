@@ -7,12 +7,6 @@ import BestSelling from "../components/BestSelling";
 import Footer from "../components/Footer";
 
 const Home = () => {
-  const handelPrev = () => {
-    console.log("previous banner");
-  };
-  const handelNext = () => {
-    console.log("previous banner");
-  };
 
   return (
     <div>
@@ -22,12 +16,7 @@ const Home = () => {
           alt="Summer Essentials collection banner"
           className="w-full h-[calc(100vh-84px)] rounded-2xl"
         />
-        <button onClick={handelPrev} className="absolute left-6 top-1/2 -translate-y-1/2 bg-white rounded-full p-3 shadow-md hover:bg-gray-100 transition-colors">
-          <ChevronLeft className="w-5 h-5 text-gray-800" />
-        </button>
-        <button onClick={handelNext} className="absolute right-6 top-1/2 -translate-y-1/2 bg-white rounded-full p-3 shadow-md hover:bg-gray-100 transition-colors">
-          <ChevronRight className="w-5 h-5 text-gray-800" />
-        </button>
+        
       </section>
       <Categories />
       <BestSelling />

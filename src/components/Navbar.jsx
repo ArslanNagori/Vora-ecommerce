@@ -14,7 +14,7 @@ const Navbar = () => {
 
         <div className="flex gap-6 py-2">
           <Link
-            to="/products"
+            to="/products?category=all"
             className="text-sm font-medium text-gray-800 hover:text-black cursor-pointer transition-colors"
           >
             Shop
@@ -33,7 +33,6 @@ const Navbar = () => {
           </Link>
           <Link
             to="/products?category=accessories"
-            k
             className="text-sm font-medium text-gray-800 hover:text-black cursor-pointer  transition-colors"
           >
             Accessories
