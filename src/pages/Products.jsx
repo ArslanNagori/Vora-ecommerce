@@ -34,7 +34,7 @@ useEffect(() => {
     setproducts(formatted);
     setloading(false);
   });
-}, [category]);
+}, [category]); 
 
   return (
     <div className="px-8 py-8">
