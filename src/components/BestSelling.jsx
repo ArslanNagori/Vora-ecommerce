@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import { ChevronRight } from "lucide-react";
 
@@ -39,7 +40,7 @@ const bestSellingProducts = [
     title: "Noise Cancelling Headphones",
     price: 4999,
     image:
-  "https://img.freepik.com/premium-photo/minimalist-white-headphones-with-4k-hd-technology_899449-18121.jpg?w=2000",
+      "https://img.freepik.com/premium-photo/minimalist-white-headphones-with-4k-hd-technology_899449-18121.jpg?w=2000",
     colors: ["#111827", "#e5e7eb"],
   },
 ];
@@ -54,9 +55,11 @@ const BestSelling = () => {
             Top Picks
           </span>
         </div>
-        <p className="text-sm text-gray-700 cursor-pointer hover:text-black transition-colors">
-          View all →
-        </p>
+        <Link to="/products?category=all">
+          <p className="text-sm text-gray-700 cursor-pointer hover:text-black transition-colors">
+            View all →
+          </p>
+        </Link>
       </div>
 
       <div className="relative">

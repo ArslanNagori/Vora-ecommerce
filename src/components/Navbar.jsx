@@ -12,7 +12,7 @@ const Navbar = () => {
           <img className="w-30 h-auto" src={voraLogo} alt="Brand Logo" />
           </Link>{/* Logo */}
 
-        <div className="flex gap-6 py-2">
+        <div className="flex gap-6 py-2"> 
           <Link
             to="/products?category=all"
             className="text-sm font-medium text-gray-800 hover:text-black cursor-pointer transition-colors"
