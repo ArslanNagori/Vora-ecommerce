@@ -11,7 +11,7 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom'
 
 
 const App = () => {
-  return (
+  return ( 
     <div>
       <BrowserRouter>
       <Navbar />
