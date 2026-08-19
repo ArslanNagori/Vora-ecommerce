@@ -1,13 +1,23 @@
 import { Heart, ShoppingBag } from "lucide-react";
+import { useContext } from "react";
+import { WishlistContext } from "../context/WishlistProvider";
 
-const ProductCart = ({ image, title, description, price, colors }) => {
+
+const ProductCart = ({ id, image, title, description, price, colors }) => {
+
+  const { toggleWishlist, isInWishlist } = useContext(WishlistContext);
+  const saved = isInWishlist(id);
+
   return (
     <div className="bg-white border border-[#D8D1C7] rounded-xl p-2.5 w-full max-w-52.5 hover:shadow-md transition-shadow duration-200">
 
       {/* Image area */}
       <div className="relative bg-[#F7F3EC] rounded-lg h-36 flex items-center justify-center overflow-hidden">
-        <button className="absolute top-2 right-2 bg-white rounded-full w-7 h-7 flex items-center justify-center shadow-sm hover:bg-[#FAF8F3] transition-colors z-10">
-          <Heart className="w-3.5 h-3.5 text-[#77736D]" />
+        <button onClick={() => {
+          toggleWishlist({ id, image, title, description, price, colors })
+        }} className="absolute top-2 right-2 bg-white rounded-full w-7 h-7 flex items-center justify-center shadow-sm hover:bg-[#FAF8F3] transition-colors z-10">
+          <Heart className={`w-3.5 h-3.5 transition-colors ${saved ? "fill-red-500 text-red-500" : "text-[#77736D]"
+            }`} />
         </button>
 
         <img

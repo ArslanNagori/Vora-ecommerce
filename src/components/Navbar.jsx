@@ -13,8 +13,8 @@ const Navbar = () => {
     location.pathname === "/products" && !activeCategory && !isSale;
 
   const linkClass = (isActive) =>
-    `text-sm font-medium transition-colors ${
-      isActive ? "text-black font-semibold" : "text-gray-800 hover:text-black"
+    `text-sm  font-medium transition-colors ${
+      isActive ? "text-black underline underline-offset-3 font-semibold" : "text-gray-800 hover:text-black"
     }`;
 
   return (

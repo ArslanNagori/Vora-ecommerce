@@ -43,7 +43,7 @@ const bestSellingProducts = [
       "https://img.freepik.com/premium-photo/minimalist-white-headphones-with-4k-hd-technology_899449-18121.jpg?w=2000",
     colors: ["#111827", "#e5e7eb"],
   },
-   {
+  {
     id: 6,
     title: "Ghar Soaps Sandalwood & Saffron Magic Bar",
     price: 398,

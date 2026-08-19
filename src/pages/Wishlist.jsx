@@ -61,7 +61,7 @@ const Wishlist = () => {
         </p>
       </div>
 
-      {!isEmpty && (
+      {isEmpty ===false && (
         <p className="text-sm font-medium text-gray-800 mb-4">
           {wishlistItems.length} items
         </p>
@@ -88,7 +88,7 @@ const Wishlist = () => {
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols- md:grid-cols-6 gap-4">
             {wishlistItems.map((item) => (
               <ProductCard key={item.id} {...item} />
             ))}
