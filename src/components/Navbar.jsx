@@ -84,12 +84,12 @@ const Navbar = () => {
             </Link>
           
 
-          <div className="flex items-center gap-1 cursor-pointer">
+          <Link to='/cart' className="flex items-center gap-1 cursor-pointer">
             <ShoppingBag className="w-5 h-5 text-gray-800" />
             <h3 className="text-sm font-medium text-gray-800 hover:text-black transition-colors">
               Cart
             </h3>
-          </div>
+          </Link>
         </div>
       </nav>
     </>

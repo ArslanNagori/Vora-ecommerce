@@ -1,5 +1,5 @@
 import React from "react";
-import heroImage from "../asset/Vora_hero_banner4.png";
+import heroImage from "../asset/Vora_hero_banner2.png";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ServiceHighlights from "../components/ServiceItems/ServiceHighlights";
 import Categories from "../components/Categories/Categories";
@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <div>
       <section className="relative h-60 overflow-hidden rounded-2xl ">
-        <Link  to="/products?category=all">
+        <Link  to="/products">
           <img
             src={heroImage}
             alt="Summer Essentials collection banner"

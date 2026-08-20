@@ -1,44 +1,14 @@
 import { Link } from "react-router-dom";
 import { Heart, ArrowRight } from "lucide-react";
 import ProductCard from "../components/ProductCard";
+import { useContext } from "react";
+import { WishlistContext } from "../context/WishlistProvider";
 
-const wishlistItems = [
-  {
-    id: 1,
-    title: "Linen Relaxed Shirt",
-    price: 2499,
-    image:
-      "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=600&q=80",
-    colors: ["#e8ddc9", "#8a8a7d", "#1c1c1b"],
-  },
-  {
-    id: 2,
-    title: "Essential Hoodie",
-    price: 1999,
-    image:
-      "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=600&q=80",
-    colors: ["#7c8368", "#d8d1c7", "#1c1c1b"],
-  },
-  {
-    id: 3,
-    title: "Utility Jacket",
-    price: 3499,
-    image:
-      "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=600&q=80",
-    colors: ["#e8ded0", "#8a8a7d", "#1c1c1b"],
-  },
-  {
-    id: 4,
-    title: "Minimal Sneakers",
-    price: 1499,
-    image:
-      "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=600&q=80",
-    colors: ["#f7f3ec", "#a8a29c", "#1c1c1b"],
-  },
-];
+
 
 const Wishlist = () => {
-  const isEmpty = wishlistItems.length === 0;
+  const { wishlist } = useContext(WishlistContext);
+  const isEmpty = wishlist.length === 0;
 
   return (
     <div className="bg-[#F7F3EC] min-h-screen px-6 md:px-10 py-8">
@@ -63,7 +33,7 @@ const Wishlist = () => {
 
       {isEmpty ===false && (
         <p className="text-sm font-medium text-gray-800 mb-4">
-          {wishlistItems.length} items
+          {wishlist.length} items
         </p>
       )}
 
@@ -88,8 +58,8 @@ const Wishlist = () => {
         </div>
       ) : (
         <>
-          <div className="grid grid-cols- md:grid-cols-6 gap-4">
-            {wishlistItems.map((item) => (
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+            {wishlist.map((item) => (
               <ProductCard key={item.id} {...item} />
             ))}
           </div>

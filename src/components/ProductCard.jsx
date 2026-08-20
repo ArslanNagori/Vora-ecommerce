@@ -1,11 +1,13 @@
 import { Heart, ShoppingBag } from "lucide-react";
 import { useContext } from "react";
 import { WishlistContext } from "../context/WishlistProvider";
+import { CartContext } from "../context/CartProvider";
 
 
 const ProductCart = ({ id, image, title, description, price, colors }) => {
 
   const { toggleWishlist, isInWishlist } = useContext(WishlistContext);
+  const {addToCart} = useContext(CartContext);
   const saved = isInWishlist(id);
 
   return (
@@ -56,7 +58,8 @@ const ProductCart = ({ id, image, title, description, price, colors }) => {
             ${price?.toLocaleString("en-IN")}
           </p>
 
-          <button className="bg-[#FAF8F3] hover:bg-[#1C1C1B] border border-[#D8D1C7] hover:border-[#1C1C1B] active:scale-95 text-[#22211F] hover:text-white text-[10.5px] font-medium px-2 py-1.5 rounded-md flex items-center gap-1 transition-all duration-200">
+          <button
+          onClick={()=>addToCart({ id, image, title, description, price, colors })} className="bg-[#FAF8F3] hover:bg-[#1C1C1B] border border-[#D8D1C7] hover:border-[#1C1C1B] active:scale-95 text-[#22211F] hover:text-white text-[10.5px] font-medium px-2 py-1.5 rounded-md flex items-center gap-1 transition-all duration-200">
             <ShoppingBag className="w-3 h-3" />
             Add
           </button>

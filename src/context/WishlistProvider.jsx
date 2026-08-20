@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, createContext, useEffect, useContext } from "react";
+import { useState, createContext, useEffect } from "react";
 
 // Create the "shared box" itself
 export const WishlistContext = createContext();
@@ -26,7 +26,7 @@ export const WishlistProvider = ({ children }) => {
 			setwishlist(newWishlist);
 		} else {
 			const newWishlist = [...wishlist, product];
-
+ 
 			setwishlist(newWishlist);
 		}
 	};
