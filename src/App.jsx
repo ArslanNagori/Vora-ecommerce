@@ -6,6 +6,7 @@ import Cart from './pages/Cart'
 import Wishlist from './pages/Wishlist'
 import Login from './pages/Login'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import { Toaster } from "react-hot-toast";
 
 
 
@@ -14,6 +15,7 @@ const App = () => {
     <div>
       <BrowserRouter>
       <Navbar />
+      <Toaster position='top-right'/>
 
       <Routes>
         <Route path='/' element={ <Home />} />

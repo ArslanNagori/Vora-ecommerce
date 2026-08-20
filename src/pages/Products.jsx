@@ -10,22 +10,16 @@ const Products = () => {
 
   const [searchParam] = useSearchParams();
   const category = searchParam.get("category");
+  const search = searchParam.get("search");
 
   const categoryMap = {
-  men: "men's clothing",
-  women: "women's clothing",
-  accessories: "jewelery",
-};
+    men: "men's clothing",
+    women: "women's clothing",
+    accessories: "jewelery",
+  };
 
-useEffect(() => {
-  const dummyCategory = categoryMap[category];
-
-  const url = dummyCategory
-    ? `https://fakestoreapi.com/products/category/${encodeURIComponent(dummyCategory)}`
-    : `https://fakestoreapi.com/products`;
-
-  axios.get(url).then((res) => {
-    const formatted = res.data.map((item) => ({
+  const updateProductState = (rawProducts) => {
+    const formatted = rawProducts.map((item) => ({
       id: item.id,
       title: item.title,
       price: item.price,
@@ -33,12 +27,38 @@ useEffect(() => {
     }));
     setproducts(formatted);
     setloading(false);
-  });
-},[category]); 
+  };
+
+  const fetchBySearch = () => {
+    axios.get("https://fakestoreapi.com/products").then((res) => {
+      const matched = res.data.filter((item) =>
+        item.title.toLowerCase().includes(search.toLowerCase())
+      );
+      updateProductState(matched);
+    });
+  };
+
+  const fetchByCategory = () => {
+    const dummyCategory = categoryMap[category];
+    const url = dummyCategory
+      ? `https://fakestoreapi.com/products/category/${encodeURIComponent(dummyCategory)}`
+      : `https://fakestoreapi.com/products`;
+
+    axios.get(url).then((res) => {
+      updateProductState(res.data);
+    });
+  };
+
+  useEffect(() => {
+    if (search) {
+      fetchBySearch();
+    } else {
+      fetchByCategory();
+    }
+  }, [category, search]);
 
   return (
-    <div className="px-8 py-8 ">
-      {/* Page header */}
+    <div className="px-8 py-8">
       <div className="mb-8">
         <h1 className="text-3xl font-semibold text-gray-900 mb-2">
           {category
@@ -48,11 +68,8 @@ useEffect(() => {
       </div>
 
       <div className="flex gap-8">
-        {/* Sidebar */}
-
         <ProductsSideBar />
 
-        {/* Main content */}
         <div className="flex-1">
           <div className="flex justify-between items-center mb-4">
             <p className="text-sm text-gray-600">

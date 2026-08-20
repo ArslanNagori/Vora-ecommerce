@@ -2,12 +2,14 @@ import { Heart, ShoppingBag } from "lucide-react";
 import { useContext } from "react";
 import { WishlistContext } from "../context/WishlistProvider";
 import { CartContext } from "../context/CartProvider";
+import toast from "react-hot-toast";
+
 
 
 const ProductCart = ({ id, image, title, description, price, colors }) => {
 
   const { toggleWishlist, isInWishlist } = useContext(WishlistContext);
-  const {addToCart} = useContext(CartContext);
+  const { addToCart } = useContext(CartContext);
   const saved = isInWishlist(id);
 
   return (
@@ -16,7 +18,7 @@ const ProductCart = ({ id, image, title, description, price, colors }) => {
       {/* Image area */}
       <div className="relative bg-[#F7F3EC] rounded-lg h-36 flex items-center justify-center overflow-hidden">
         <button onClick={() => {
-          toggleWishlist({ id, image, title, description, price, colors })
+          toggleWishlist({ id, image, title, description, price, colors });
         }} className="absolute top-2 right-2 bg-white rounded-full w-7 h-7 flex items-center justify-center shadow-sm hover:bg-[#FAF8F3] transition-colors z-10">
           <Heart className={`w-3.5 h-3.5 transition-colors ${saved ? "fill-red-500 text-red-500" : "text-[#77736D]"
             }`} />
@@ -59,7 +61,10 @@ const ProductCart = ({ id, image, title, description, price, colors }) => {
           </p>
 
           <button
-          onClick={()=>addToCart({ id, image, title, description, price, colors })} className="bg-[#FAF8F3] hover:bg-[#1C1C1B] border border-[#D8D1C7] hover:border-[#1C1C1B] active:scale-95 text-[#22211F] hover:text-white text-[10.5px] font-medium px-2 py-1.5 rounded-md flex items-center gap-1 transition-all duration-200">
+            onClick={
+              () => { addToCart({ id, image, title, description, price, colors });
+              toast.success('Item added to cart');
+              }} className="bg-[#FAF8F3] hover:bg-[#1C1C1B] border border-[#D8D1C7] hover:border-[#1C1C1B] active:scale-95 text-[#22211F] hover:text-white text-[10.5px] font-medium px-2 py-1.5 rounded-md flex items-center gap-1 transition-all duration-200">
             <ShoppingBag className="w-3 h-3" />
             Add
           </button>

@@ -1,9 +1,20 @@
 import React from "react";
 import voraLogo from "../asset/Vora_logo.png";
 import { Search, UserRound, Heart, ShoppingBag } from "lucide-react";
-import { Link, useSearchParams, useLocation,  } from "react-router-dom";
+import { Link, useSearchParams, useLocation, useNavigate } from "react-router-dom";
+import { useContext, useState } from 'react'
+import { CartContext } from "../context/CartProvider";
+import { AuthContext } from "../context/AuthProvider";
 
 const Navbar = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchTerm.trim() === '') return;
+    navigate(`/products?search=${encodeURIComponent(searchTerm)}`)
+  }
+  const { cartCount } = useContext(CartContext);
   const [searchParams] = useSearchParams();
   const location = useLocation();
 
@@ -13,9 +24,11 @@ const Navbar = () => {
     location.pathname === "/products" && !activeCategory && !isSale;
 
   const linkClass = (isActive) =>
-    `text-sm  font-medium transition-colors ${
-      isActive ? "text-black underline underline-offset-3 font-semibold" : "text-gray-800 hover:text-black"
+    `text-sm  font-medium transition-colors ${isActive ? "text-black underline underline-offset-3 font-semibold" : "text-gray-800 hover:text-black"
     }`;
+
+
+  const { user, logout } = useContext(AuthContext);
 
   return (
     <>
@@ -48,47 +61,84 @@ const Navbar = () => {
           </Link>
           <Link
             to="/products?sale=true"
-            className={`text-sm font-medium transition-colors ${
-              isSale
-                ? "text-red-700 font-semibold"
-                : "text-red-600 hover:text-red-500"
-            }`}
+            className={`text-sm font-medium transition-colors ${isSale
+              ? "text-red-700 font-semibold"
+              : "text-red-600 hover:text-red-500"
+              }`}
           >
             Sale
           </Link>
         </div>
 
-        <div className="flex items-center gap-2 bg-stone-100 rounded-xl px-4 w-98">
+        {/*Search bar */}
+        <form
+          onSubmit={handleSearch}
+          className="flex items-center gap-2 bg-stone-100 rounded-xl px-4 w-98">
           <input
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
             className="outline-none w-full text-sm bg-transparent"
             type="text"
             placeholder="Search for products..."
           />
-          <Search className="w-5 h-5 text-gray-700" />
-        </div>
+          <button type="submit">
+            <Search className="w-5 h-5 text-gray-700" />
+          </button>
+        </form>
 
         <div className="flex items-center gap-5 py-2">
-          <div className="flex items-center gap-1 cursor-pointer">
-            <UserRound className="w-5 h-5 text-gray-800" />
-            <h3 className="text-sm font-medium text-gray-800 hover:text-black transition-colors">
-              Account
-            </h3>
-          </div>
 
-          
-            <Link to='/wishlist' className="flex items-center gap-1 cursor-pointer">
-              <Heart className="w-5 h-5 text-gray-800" />
-              <h3 className="text-sm font-medium text-gray-800 hover:text-black transition-colors">
-                Wishlist
-              </h3>
-            </Link>
-          
+
+         {user ? (
+  <div className="flex items-center gap-3">
+    <div className="flex items-center gap-1">
+      <UserRound className="w-5 h-5 text-gray-800" />
+      <h3 className="text-sm font-medium text-gray-800">
+        {user.name}
+      </h3>
+    </div>
+
+    <button
+      onClick={logout}
+      className="text-sm font-medium text-black cursor-pointer bg-red-500 p-1  hover:bg-red-600 transition-colors"
+    >
+      Logout
+    </button>
+  </div>
+) : (
+  <Link
+    to="/login"
+    className="flex items-center gap-1 cursor-pointer"
+  >
+    <UserRound className="w-5 h-5 text-gray-800" />
+    <h3 className="text-sm font-medium text-gray-800 hover:text-black transition-colors">
+      Account
+    </h3>
+  </Link>
+)}
+
+
+          <Link to='/wishlist' className="flex items-center gap-1 cursor-pointer">
+            <Heart className="w-5 h-5 text-gray-800" />
+            <h3 className="text-sm font-medium text-gray-800 hover:text-black transition-colors">
+              Wishlist
+            </h3>
+          </Link>
+
 
           <Link to='/cart' className="flex items-center gap-1 cursor-pointer">
+
             <ShoppingBag className="w-5 h-5 text-gray-800" />
             <h3 className="text-sm font-medium text-gray-800 hover:text-black transition-colors">
               Cart
             </h3>
+            {cartCount > 0 && (
+
+              <span className=" bg-[#1C1C1B] text-white text-[10px] font-medium w-5 h-5 rounded-full flex items-center justify-center">
+                {cartCount}
+              </span>
+            )}
+
           </Link>
         </div>
       </nav>
