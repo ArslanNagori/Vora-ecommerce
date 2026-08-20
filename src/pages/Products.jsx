@@ -37,7 +37,7 @@ useEffect(() => {
 },[category]); 
 
   return (
-    <div className="px-8 py-8">
+    <div className="px-8 py-8 ">
       {/* Page header */}
       <div className="mb-8">
         <h1 className="text-3xl font-semibold text-gray-900 mb-2">
