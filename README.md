@@ -1,16 +1,99 @@
-# React + Vite
+# VORA. 🖤
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, minimalist e-commerce storefront built as a hands-on React learning project. VORA combines a clean, premium UI with real-world frontend architecture — routing, global state via Context API, API integration, and persistent client-side storage.
 
-Currently, two official plugins are available:
+**Live Demo:** _( https://vora-ecommerce-gules.vercel.app/ )_
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Product Browsing** — Live product data via FakeStoreAPI, with category filtering (Men, Women, Accessories) and text search
+- **Wishlist** — Save/remove products with a heart toggle, synced across every page, persisted via localStorage
+- **Cart** — Add to cart, adjust quantities, remove items, live cart count badge in the navbar, order summary with shipping calculation
+- **Account** — UI-only login/logout flow (Context + localStorage, no backend)
+- **Responsive Product Grid** — Compact, premium product cards with color swatches and quick-add buttons
+- **Toast Notifications** — Instant feedback on cart actions via `react-hot-toast`
+- **Client-side Routing** — Full multi-page navigation with React Router DOM, including active-link highlighting and query-param-based filtering
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+
+- **React** — Component-based UI
+- **React Router DOM** — Client-side routing
+- **Context API** — Global state (Wishlist, Cart, Auth)
+- **Tailwind CSS v4** — Utility-first styling
+- **Axios** — API requests
+- **Lucide React** — Icon set
+- **FakeStoreAPI** — Product data source
+- **react-hot-toast** — Toast notifications
+- **Vite** — Build tool & dev server
+
+---
+
+## 📁 Project Structure
+src/
+├── assets/ # Images, logos
+├── components/ # Reusable UI components (Navbar, ProductCard, etc.)
+├── context/ # Global state providers (Wishlist, Cart, Auth)
+├── pages/ # Route-level pages (Home, Products, Cart, Wishlist, Login)
+├── App.jsx
+└── main.jsx
+
+
+---
+
+## 🚀 Getting Started
+
+**1. Clone the repository**
+```bash
+git clone https://github.com/ArslanNagori/vora-ecommerce.git
+cd vora-ecommerce
+```
+
+**2. Install dependencies**
+```bash
+npm install
+```
+
+**3. Run the dev server**
+```bash
+npm run dev
+```
+
+The app will be available at `http://localhost:5173`.
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] Mobile responsive 
+- [ ] Sort functionality on Products page
+- [ ] Product Details page
+- [ ] Price range filter
+- [ ] Backend integration (Node.js + Express + MongoDB) for real authentication, persistent cart/wishlist, and order management
+
+---
+
+## 📸 Screenshots
+
+- Home 
+![VORA Home Page](./public/Screenshorts/Home.png)
+
+- Products
+![VORA Products Page](./public/Screenshorts/Products.png) 
+
+- Wishlist 
+![VORA Wishlist Page](./public/Screenshorts/Wishlist.png)
+
+- Cart 
+![VORA Cart Page](./public/Screenshorts/Cart.png)
+
+
+
+
+## 🧑‍💻 Author
+
+**Arslan Nagori**
+[LinkedIn](https://linkedin.com/in/arslannagori)
